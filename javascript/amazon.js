@@ -1,5 +1,13 @@
-let productHTML = '';
+import {cart} from '../javascript/cart.js'; 
+import {product} from '../javascript/products.js';
 
+/* 
+always import modulw at top. 
+only works in live server.
+we use modules to avoid naming conflicts.
+*/
+
+let productHTML = '';
 
 product.forEach((product) => {
 
@@ -72,6 +80,7 @@ document.querySelectorAll(".js-cart")
       if (matchingitem){
         matchingitem.quantity += 1;
       }
+
       else{
         cart.push({
           productId : productId,
@@ -89,6 +98,7 @@ document.querySelectorAll(".js-cart")
 
     });
   });
+
 
 
 
