@@ -1,5 +1,5 @@
-import {cart} from '../javascript/cart.js'; 
-import {product} from '../javascript/products.js';
+import { cart, addtocart} from '../javascript/cart.js';
+import { product } from '../javascript/products.js';
 
 /* 
 always import modulw at top. 
@@ -11,7 +11,7 @@ let productHTML = '';
 
 product.forEach((product) => {
 
-    productHTML  += ` 
+  productHTML += ` 
     <div class="product-container">
     <div class="product-image-container">
       <img class="product-image" src="${product.image}">
@@ -64,37 +64,24 @@ product.forEach((product) => {
 
 document.querySelector(".products-grid").innerHTML = productHTML;
 
+export function updatecartquantity() {
+  let cartQuantity = 0;
+
+  cart.forEach((item) => {
+    cartQuantity += item.quantity
+  })
+
+  document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+
+}
+
 document.querySelectorAll(".js-cart")
-  .forEach((button) =>{
-    button.addEventListener('click' ,() =>{
+  .forEach((button) => {
+    button.addEventListener('click', () => {
       const productId = button.dataset.productId;
 
-      let matchingitem;
-
-      cart.forEach((item) =>{
-        if(productId === item.productId){
-          matchingitem = item;
-        }
-      } );
-
-      if (matchingitem){
-        matchingitem.quantity += 1;
-      }
-
-      else{
-        cart.push({
-          productId : productId,
-          quantity : 1
-        });
-        }
-
-        let cartQuantity = 0;
-
-        cart.forEach((item) =>{
-          cartQuantity += item.quantity
-        })
-
-        document.querySelector(".js-cart-quantity").innerHTML = cartQuantity;
+      addtocart(productId);
+      updatecartquantity();
 
     });
   });
