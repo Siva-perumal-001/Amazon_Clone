@@ -1,5 +1,18 @@
 import { cart , deletefromCart } from '../javascript/cart.js';
 import {product} from '../javascript/products.js';
+import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
+
+const today = dayjs();
+
+const deliveryDate7 = today.add( 7 , 'days');
+const deldate7 = deliveryDate7.format('dddd, MMMM D');
+
+const deliveryDate3 = today.add( 3 , 'days');
+const deldate3 = deliveryDate3.format('dddd, MMMM D');
+
+const deliveryDate1 = today.add( 1 , 'days');
+const deldate1 = deliveryDate1.format('dddd, MMMM D');
+
 
 let cartsummaryHTML = '';
 
