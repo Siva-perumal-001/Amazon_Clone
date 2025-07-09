@@ -75,6 +75,8 @@ document.querySelectorAll('.js-delete')
       const container = document.querySelector(`.js-delete-${productId}`);
 
       container.remove();   //remove the product from cart.
+
+      RenderPaymentSummary();
     })
   });
 
@@ -89,7 +91,7 @@ function deliveryOptionsHTML(matchingProduct, cartitem) {
     const deliveryDate = today.add(deldate, 'days');
     const deliveryString = deliveryDate.format('dddd, MMMM D');
 
-    const pricestring = deliveryOptions.priceCents === 0 ? 'FREE' : `$${Math.round(deliveryOptions.priceCents / 100).toFixed(2)} -`;
+    const pricestring = deliveryOptions.priceCents === 0 ? 'FREE' : `$${(Math.round(deliveryOptions.priceCents )/ 100).toFixed(2)} -`;
 
     const isChecked = deliveryOptions.id === cartitem.deliveryOptionId;
 
